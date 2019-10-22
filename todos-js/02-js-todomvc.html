@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <section class="todoapp" id="app">
+        <header class="header">
+            <h1>todos</h1>
+            <input class="new-todo" placeholder="What needs to be done?" autofocus />
+        </header>
+        <!-- This section should be hidden by default and shown when there are todos -->
+        <section class="main">
+            <input id="toggle-all" class="toggle-all" type="checkbox" />
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list">
+            </ul>
+        </section>
+        <!-- This footer should hidden by default and shown when there are todos -->
+        <footer class="footer">
+            <!-- This should be `0 items left` by default -->
+            <span class="todo-count"><strong>0</strong> item left</span>
+            <!-- Remove this if you don't implement routing -->
+            <ul class="filters">
+                <li><a class="selected" href="#/">All</a></li>
+                <li><a href="#/active">Active</a></li>
+                <li><a href="#/completed">Completed</a></li>
+            </ul>
+            <!-- Hidden if no completed items are left ↓ -->
+            <button class=" clear-completed">Clear completed</button>
+        </footer>
+    </section>
+
+    <h1 style="text-align: center" class="h1">该内容已存在</h1>
+
+    <!-- 模板 -->
+    <script type="text/html" id="tmp">
+        {{each list v i}}
+        <li class="{{if v.flag}}completed{{/if}}" data-id="{{v.id}}" >
+            <div class="view">
+              <input class="toggle" type="checkbox" {{if v.flag}}checked {{/if}} />
+              <label data-id="{{v.id}}">{{v.text}}</label>
+              <button class="destroy"></button>
+            </div>
+            <input  class="edit" value="{{v.text}}" data-id="{{v.id}}" autofocus />
+          </li>
+        {{/each}}
+    </script>
+
+    <script src="./js/template-web.js"></script>
+    <script src="./js/js-todomvc.js"></script>
+</body>
+
+</html>
